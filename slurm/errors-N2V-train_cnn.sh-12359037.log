@@ -1,0 +1,4 @@
+CUDA 11.8 loaded
+2024-12-16 16:07:52.020193: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+slurmstepd: error: *** JOB 12359037 ON max-cssbg012 CANCELLED AT 2024-12-16T16:07:56 ***

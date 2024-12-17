@@ -1,0 +1,15 @@
+Model Name: my_cnn_model4
+Batch Size: 16
+Epochs: 40
+
+Test Results:
+Test Loss: 0.4856
+Test Accuracy: 85.90%
+Test Precision: 86.47%
+Test Recall: 91.79%
+Test AUC: 91.30%
+F1-Score: 89.05%
+
+Confusion Matrix:
+TN: 178, FP: 56
+FN: 32, TP: 358

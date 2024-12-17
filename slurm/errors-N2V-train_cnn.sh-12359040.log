@@ -1,0 +1,67 @@
+CUDA 11.8 loaded
+2024-12-16 16:08:35.945734: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-12-16 16:09:02.993492: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-12-16 16:09:11.866648: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-12-16 16:09:13.342542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38485 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:81:00.0, compute capability: 8.0
+2024-12-16 16:09:13.344259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 38485 MB memory:  -> device: 1, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:a1:00.0, compute capability: 8.0
+2024-12-16 16:09:13.345826: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 38485 MB memory:  -> device: 2, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:c1:00.0, compute capability: 8.0
+2024-12-16 16:09:13.347292: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 38485 MB memory:  -> device: 3, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:e1:00.0, compute capability: 8.0
+2024-12-16 16:09:15.983069: W tensorflow/core/framework/op_kernel.cc:1780] OP_REQUIRES failed at conv_ops_fused_impl.h:719 : INVALID_ARGUMENT: input depth must be evenly divisible by filter depth: 1 vs 3
+Traceback (most recent call last):
+  File "/gpfs/cssb/user/alsaadiy/fkan-biostatistics/src/training_cnn.py", line 196, in <module>
+    history = model.fit(
+  File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/tensorflow/python/eager/execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Graph execution error:
+
+Detected at node '150X150complex_cnn_model_g/conv2d/Relu' defined at (most recent call last):
+    File "/gpfs/cssb/user/alsaadiy/fkan-biostatistics/src/training_cnn.py", line 196, in <module>
+      history = model.fit(
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/training.py", line 1564, in fit
+      tmp_logs = self.train_function(iterator)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/training.py", line 1160, in train_function
+      return step_function(self, iterator)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/training.py", line 1146, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/training.py", line 1135, in run_step
+      outputs = model.train_step(data)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/training.py", line 993, in train_step
+      y_pred = self(x, training=True)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/training.py", line 557, in __call__
+      return super().__call__(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/base_layer.py", line 1097, in __call__
+      outputs = call_fn(inputs, *args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 96, in error_handler
+      return fn(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/sequential.py", line 410, in call
+      return super().call(inputs, training=training, mask=mask)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/functional.py", line 510, in call
+      return self._run_internal_graph(inputs, training=training, mask=mask)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/functional.py", line 667, in _run_internal_graph
+      outputs = node.layer(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/engine/base_layer.py", line 1097, in __call__
+      outputs = call_fn(inputs, *args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/utils/traceback_utils.py", line 96, in error_handler
+      return fn(*args, **kwargs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/layers/convolutional/base_conv.py", line 314, in call
+      return self.activation(outputs)
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/activations.py", line 317, in relu
+      return backend.relu(
+    File "/gpfs/cssb/user/alsaadiy/micromamba/envs/tensorflow2.10/lib/python3.10/site-packages/keras/backend.py", line 5366, in relu
+      x = tf.nn.relu(x)
+Node: '150X150complex_cnn_model_g/conv2d/Relu'
+input depth must be evenly divisible by filter depth: 1 vs 3
+	 [[{{node 150X150complex_cnn_model_g/conv2d/Relu}}]] [Op:__inference_train_function_2710]

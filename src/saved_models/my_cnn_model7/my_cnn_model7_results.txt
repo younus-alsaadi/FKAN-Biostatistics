@@ -1,0 +1,15 @@
+Description: this model after improve Data Augmentation by Add more aggressive augmentations such as random brightness/contrast adjustments and height_shift_range=Model Name: my_cnn_model7
+Batch Size: 4
+Epochs: 60
+
+Test Results:
+Test Loss: 0.4796
+Test Accuracy: 62.50%
+Test Precision: 62.50%
+Test Recall: 100.00%
+Test AUC: 89.81%
+F1-Score: 76.92%
+
+Confusion Matrix:
+TN: 0, FP: 234
+FN: 0, TP: 390

@@ -1,0 +1,15 @@
+Description: this code how to handle class imbalance by applying class weights during trainingModel Name: my_cnn_model9
+Batch Size: 4
+Epochs: 60
+
+Test Results:
+Test Loss: 0.4301
+Test Accuracy: 85.26%
+Test Precision: 89.01%
+Test Recall: 87.18%
+Test AUC: 91.20%
+F1-Score: 88.08%
+
+Confusion Matrix:
+TN: 192, FP: 42
+FN: 50, TP: 340

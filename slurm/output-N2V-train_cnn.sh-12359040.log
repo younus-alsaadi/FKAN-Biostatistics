@@ -1,0 +1,69 @@
+TensorFlow version: 2.10.0
+GPUs detected: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+GPU(s) available: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:2', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:3', device_type='GPU')]
+Model: "150X150complex_cnn_model_g"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 222, 222, 64)      1792      
+                                                                 
+ batch_normalization (BatchN  (None, 222, 222, 64)     256       
+ ormalization)                                                   
+                                                                 
+ conv2d_1 (Conv2D)           (None, 220, 220, 64)      36928     
+                                                                 
+ batch_normalization_1 (Batc  (None, 220, 220, 64)     256       
+ hNormalization)                                                 
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 110, 110, 64)     0         
+ )                                                               
+                                                                 
+ conv2d_2 (Conv2D)           (None, 108, 108, 128)     73856     
+                                                                 
+ batch_normalization_2 (Batc  (None, 108, 108, 128)    512       
+ hNormalization)                                                 
+                                                                 
+ conv2d_3 (Conv2D)           (None, 106, 106, 128)     147584    
+                                                                 
+ batch_normalization_3 (Batc  (None, 106, 106, 128)    512       
+ hNormalization)                                                 
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 53, 53, 128)      0         
+ 2D)                                                             
+                                                                 
+ conv2d_4 (Conv2D)           (None, 51, 51, 256)       295168    
+                                                                 
+ batch_normalization_4 (Batc  (None, 51, 51, 256)      1024      
+ hNormalization)                                                 
+                                                                 
+ conv2d_5 (Conv2D)           (None, 49, 49, 256)       590080    
+                                                                 
+ batch_normalization_5 (Batc  (None, 49, 49, 256)      1024      
+ hNormalization)                                                 
+                                                                 
+ max_pooling2d_2 (MaxPooling  (None, 24, 24, 256)      0         
+ 2D)                                                             
+                                                                 
+ global_average_pooling2d (G  (None, 256)              0         
+ lobalAveragePooling2D)                                          
+                                                                 
+ dense (Dense)               (None, 256)               65792     
+                                                                 
+ dropout (Dropout)           (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 1)                 257       
+                                                                 
+=================================================================
+Total params: 1,215,041
+Trainable params: 1,213,249
+Non-trainable params: 1,792
+_________________________________________________________________
+None
+Found 5216 images belonging to 2 classes.
+Found 16 images belonging to 2 classes.
+Training samples: 5216
+Validation samples: 16
+Class Indices: {'NORMAL': 0, 'PNEUMONIA': 1}
+Computed Class Weights: {0: 1.9448173005219984, 1: 0.6730322580645162}
+Training started...
+Epoch 1/100

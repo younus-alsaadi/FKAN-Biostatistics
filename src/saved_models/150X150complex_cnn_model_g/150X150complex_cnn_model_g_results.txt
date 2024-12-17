@@ -1,0 +1,15 @@
+Description: this code complex cnnModel Name: 150X150complex_cnn_model_g
+Batch Size: 4
+Epochs: 100
+
+Test Results:
+Test Loss: 0.3183
+Test Accuracy: 89.90%
+Test Precision: 88.84%
+Test Recall: 95.90%
+Test AUC: 95.41%
+F1-Score: 92.23%
+
+Confusion Matrix:
+TN: 187, FP: 47
+FN: 16, TP: 374
