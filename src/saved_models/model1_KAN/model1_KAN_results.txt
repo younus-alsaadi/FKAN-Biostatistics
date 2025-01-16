@@ -1,0 +1,23 @@
+Description: This code implements a KAN+CNN with Weight Decay (L2 Regularization).
+Model Name: model1_KAN
+Batch Size: 4
+Epochs: {num_epochs}
+
+Test Results:
+Test Loss: 0.5278
+Test Accuracy: 78.04%
+Test Precision: 77.32%
+Test Recall: 91.79%
+Test AUC: 73.46%
+F1-Score: 83.94%
+
+Classification Report:
+               NORMAL   PNEUMONIA  accuracy   macro avg  weighted avg
+precision    0.801242    0.773218  0.780449    0.787230      0.783727
+recall       0.551282    0.917949  0.780449    0.734615      0.780449
+f1-score     0.653165    0.839390  0.780449    0.746277      0.769556
+support    234.000000  390.000000  0.780449  624.000000    624.000000
+
+Confusion Matrix:
+TN: 129, FP: 105
+FN: 32, TP: 358

@@ -1,0 +1,22 @@
+Description: This code implements a KAN+CNN.
+Model Name: model1_KAN
+Batch Size: 4
+Epochs: 40
+Test Results:
+Test Loss: 0.4746
+Test Accuracy: 80.77%
+Test Precision: 80.68%
+Test Recall: 91.03%
+Test AUC: 77.35%
+F1-Score: 85.54%
+
+Classification Report:
+               NORMAL   PNEUMONIA  accuracy   macro avg  weighted avg
+precision    0.809783    0.806818  0.807692    0.808300      0.807930
+recall       0.636752    0.910256  0.807692    0.773504      0.807692
+f1-score     0.712919    0.855422  0.807692    0.784170      0.801983
+support    234.000000  390.000000  0.807692  624.000000    624.000000
+
+Confusion Matrix:
+TN: 149, FP: 85
+FN: 35, TP: 355

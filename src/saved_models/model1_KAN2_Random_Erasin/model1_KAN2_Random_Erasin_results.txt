@@ -1,0 +1,23 @@
+Description: This code implements a KAN+CNN with Weight Decay (L2 Regularization).
+Model Name: model1_KAN2_Random_Erasin
+Batch Size: 4
+Epochs: {num_epochs}
+
+Test Results:
+Test Loss: 0.4844
+Test Accuracy: 81.41%
+Test Precision: 81.42%
+Test Recall: 91.03%
+Test AUC: 78.21%
+F1-Score: 85.96%
+
+Classification Report:
+               NORMAL   PNEUMONIA  accuracy   macro avg  weighted avg
+precision    0.813830    0.814220  0.814103    0.814025      0.814074
+recall       0.653846    0.910256  0.814103    0.782051      0.814103
+f1-score     0.725118    0.859564  0.814103    0.792341      0.809147
+support    234.000000  390.000000  0.814103  624.000000    624.000000
+
+Confusion Matrix:
+TN: 153, FP: 81
+FN: 35, TP: 355

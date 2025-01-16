@@ -1,0 +1,23 @@
+Description: This code implements a complex CNN.
+Model Name: test
+Batch Size: 4
+Epochs: {num_epochs}
+
+Test Results:
+Test Loss: 0.4863
+Test Accuracy: 82.21%
+Test Precision: 78.76%
+Test Recall: 97.95%
+Test AUC: 76.97%
+F1-Score: 87.31%
+
+Classification Report:
+               NORMAL   PNEUMONIA  accuracy   macro avg  weighted avg
+precision    0.942446    0.787629  0.822115    0.865037      0.845685
+recall       0.559829    0.979487  0.822115    0.769658      0.822115
+f1-score     0.702413    0.873143  0.822115    0.787778      0.809119
+support    234.000000  390.000000  0.822115  624.000000    624.000000
+
+Confusion Matrix:
+TN: 131, FP: 103
+FN: 8, TP: 382

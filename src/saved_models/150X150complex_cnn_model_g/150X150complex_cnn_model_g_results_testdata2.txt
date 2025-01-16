@@ -1,0 +1,24 @@
+Description: This code implements a complex CNN.
+Model Name: 150X150complex_cnn_model_g
+Batch Size: 4
+Epochs: 100
+
+Test Results:
+Test Loss: 0.2828
+Test Accuracy: 92.47%
+Test Precision: 89.61%
+Test Recall: 99.49%
+Test AUC: 98.06%
+F1-Score: 94.29%
+
+Classification Report:
+              precision    recall  f1-score  support
+NORMAL         0.989529  0.807692  0.889412      234
+PNEUMONIA      0.896074  0.994872  0.942892      390
+accuracy       0.924679  0.924679  0.924679        0
+macro avg      0.942801  0.901282  0.916152      624
+weighted avg   0.931119  0.924679  0.922837      624
+
+Confusion Matrix:
+TN: 189, FP: 45
+FN: 2, TP: 388
