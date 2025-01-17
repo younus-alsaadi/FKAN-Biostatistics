@@ -1,0 +1,15 @@
+Description: this code cnn on the data normDataModel Name: CNN_normData
+Batch Size: 4
+Epochs: 60
+
+Test Results:
+Test Loss: 1.6022
+Test Accuracy: 62.82%
+Test Precision: 62.70%
+Test Recall: 100.00%
+Test AUC: 84.27%
+F1-Score: 77.08%
+
+Confusion Matrix:
+TN: 2, FP: 232
+FN: 0, TP: 390

@@ -60,10 +60,16 @@ class KAN_CNN(nn.Module):
 def main():
    
     # Paths to your datasets
+    train_path = "../normData/train"
+    val_path = "../normData/val"
+    test_path = "../normData/test"
+    
+    """    
     train_path = "../data/chest_xray/train"
     val_path = "../data/chest_xray/val"
     test_path = "../data/chest_xray/test"
-    model_name = "model1_KAN2_Random_Erasin"
+    """
+    model_name = "model1_KAN_normData"
     model_folder = "saved_models"
 
     # Define transformations for training with augmentation
