@@ -1,0 +1,22 @@
+Information:
+  Model Name:   KAN_RESENT_KANLinear 
+  Model Name:   the model is KAN RESENT(KAN Linear) 
+  Train batch:  4 
+  Train epochs: 100 
+  Train learning rate:  0.0001 
+  Image size:  224 
+
+Validation Metrics:
+  Loss:      0.4125
+  Accuracy:  0.8981
+  Precision: 0.8413
+  Recall:    0.9815
+  F1-Score:  0.9060
+
+Test Metrics:
+  Loss:      0.4760
+  Accuracy:  0.8237
+  Precision: 0.7672
+  Recall:    0.7607
+  F1-Score:  0.7607
+

@@ -1,0 +1,14 @@
+Validation Metrics:
+  Loss:      0.3385
+  Accuracy:  0.9722
+  Precision: 0.9474
+  Recall:    1.0000
+  F1-Score:  0.9730
+
+Test Metrics:
+  Loss:      0.4242
+  Accuracy:  0.8862
+  Precision: 0.9503
+  Recall:    0.7350
+  F1-Score:  0.7350
+

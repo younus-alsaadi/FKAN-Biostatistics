@@ -5,13 +5,14 @@ __pycache__/
 
 #
 outputs/
-data/
 slurm/
+data/
 new_data/
 normData/
 src/logs
 src/CNN
 src/FLEnv
+src/model
 run2.sh
 run.sh
 test

@@ -1,0 +1,22 @@
+Information:
+  Model Name: RESNET_KANFourier 
+  Model Name: the model is KAN RESENT(KAN Fourier) 
+  Train batch: 4 
+  Train epochs: 100 
+  Train learning rate: 0.0001 
+  Image size: 224 
+
+Validation Metrics:
+  Loss:      0.3605
+  Accuracy:  0.9583
+  Precision: 0.9626
+  Recall:    0.9537
+  F1-Score:  0.9581
+
+Test Metrics:
+  Loss:      0.5153
+  Accuracy:  0.7949
+  Precision: 0.9206
+  Recall:    0.4957
+  F1-Score:  0.4957
+

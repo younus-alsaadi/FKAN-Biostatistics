@@ -1,0 +1,15 @@
+[Paths]
+train_directory =../normData/train
+val_directory=../normData/val
+test_directory =../normData/test
+output_directory =models
+
+[Training]
+train_batch = 4
+train_epochs = 100
+train_learning_rate= 1e-4
+img_size=224
+
+[Prediction]
+model_name = KAN_RESENT_KANLinear
+description = the model is KAN RESENT(KAN Linear)
