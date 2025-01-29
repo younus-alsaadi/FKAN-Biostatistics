@@ -5,13 +5,8 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from convkan import ConvKAN, LayerNorm2D
 from tqdm import tqdm
-from sklearn.metrics import (
-    precision_score,
-    recall_score,
-    roc_auc_score,
-    accuracy_score,
-    f1_score,
-)
+from sklearn.metrics import  precision_score, recall_score, roc_auc_score, accuracy_score, f1_score
+
 import logging
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
@@ -60,41 +55,28 @@ class KAN_CNN(nn.Module):
 def main():
    
     # Paths to your datasets
-    train_path = "../normData/train"
-    val_path = "../normData/val"
-    test_path = "../normData/test"
     
-    """    
+    #train_path = "../normData/train"
+    #val_path = "../normData/val"
+    #test_path = "../normData/test"
+    
+        
     train_path = "../data/chest_xray/train"
     val_path = "../data/chest_xray/val"
     test_path = "../data/chest_xray/test"
-    """
-    model_name = "model1_KAN_normData"
-    model_folder = "saved_models"
+    
+    model_name = "model_KAN_new_data"
+    model_folder = "saved_models_Data"
 
     # Define transformations for training with augmentation
     train_transform = transforms.Compose([
         transforms.Grayscale(num_output_channels=1),
-        transforms.Resize((256, 256)),
-        transforms.RandomRotation(20),
-        transforms.RandomHorizontalFlip(),
-        transforms.RandomAffine(degrees=0, translate=(0.2, 0.2), shear=0.2),
-        # Randomly crop the 256×256 image to 224×224
-        transforms.RandomResizedCrop(size=(224, 224), scale=(0.8, 1.2)),
+        transforms.Resize(256),
+        transforms.RandomCrop((224, 224)),
+        transforms.RandomHorizontalFlip(p=0.5),
+        transforms.RandomRotation(degrees=10),
         transforms.ToTensor(),
-        
-        
-        # ---------- ADD THIS RANDOM ERASING ----------
-        transforms.RandomErasing(
-            p=0.5,            # Probability of erasing
-            scale=(0.02, 0.33),  # Range of proportion of erased area
-            ratio=(0.3, 3.3),    # Aspect ratio range of the erased area
-            value=0,             # Pixel value for the erased region (0 for black)
-            inplace=False
-            ),
-        # ---------------------------------------------
         transforms.Normalize((0.1307,), (0.3081,))
-        
     ])
 
     # Define transformations for validation and test (Rescaling only)
@@ -160,7 +142,7 @@ def main():
         model = nn.DataParallel(model)
 
     criterion = nn.BCELoss()
-    optimizer = optim.AdamW(model.parameters(), lr=1e-4)
+    optimizer = optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-4)
     
     # ------------------ ADD THIS ------------------ #
     # # We use ReduceLROnPlateau to reduce LR by factor=0.5 if val_loss doesn't improve
@@ -179,7 +161,7 @@ def main():
     logger.info("=" * 100)
 
     # Training the model
-    num_epochs = 40
+    num_epochs = 60
     train_losses = []
     val_losses = []
     best_val_loss = float("inf")
@@ -259,7 +241,6 @@ def main():
         val_preds = []
         val_targets = []
         
-        
         with torch.no_grad():
             for inputs, labels in val_loader:
                 inputs, labels = inputs.to(device), labels.to(device).float()
@@ -315,9 +296,46 @@ def main():
     plt.savefig(
         os.path.join(model_path, f"{model_name}_loss_curve.png")
     )
-    plt.show()
+    plt.close()
 
     logger.info(f"Test model start it for {model_name}")
+    logger.info("=" * 100)
+
+    model.load_state_dict(
+        torch.load(best_model_path)
+    )
+    model.eval()
+    val_running_loss = 0.0
+    val_preds = []
+    val_targets = []
+
+    with torch.no_grad():
+        for inputs, labels in val_loader:
+            inputs, labels = inputs.to(device), labels.to(device).float()
+            outputs = model(inputs)
+
+            # Compute loss
+            loss = criterion(outputs.squeeze(), labels)
+            val_running_loss += loss.item() * inputs.size(0)
+
+            # Collect predictions and targets
+            preds = (outputs.squeeze() > 0.5).float()
+            val_preds.extend(preds.cpu().numpy())
+            val_targets.extend(labels.cpu().numpy())
+
+    # Calculate validation metrics
+    val_loss = val_running_loss / len(val_loader.dataset)
+    val_accuracy = accuracy_score(val_targets, val_preds)
+    val_precision = precision_score(val_targets, val_preds)
+    val_recall = recall_score(val_targets, val_preds)
+    val_f1 = f1_score(val_targets, val_preds)
+    val_auc = roc_auc_score(val_targets, val_preds)
+
+    logger.info(
+        f"Post-Training Validation Metrics - Loss: {val_loss:.4f}, "
+        f"Accuracy: {val_accuracy:.4f}, Precision: {val_precision:.4f}, "
+        f"Recall: {val_recall:.4f}, F1: {val_f1:.4f}, AUC: {val_auc:.4f}"
+    )
     logger.info("=" * 100)
 
     # Testing the model
@@ -375,14 +393,21 @@ def main():
         results_file.write("Description: This code implements a KAN+CNN with Weight Decay (L2 Regularization).\n")
         results_file.write(f"Model Name: {model_name}\n")
         results_file.write("Batch Size: 4\n")
-        results_file.write("Epochs: {num_epochs}\n")
+        results_file.write("Epochs: {num_epochs}\n\n")
+        results_file.write("\nval Results:\n")
+        results_file.write(f"Val Loss: {val_loss:.4f}\n")
+        results_file.write(f"Val Accuracy: {val_accuracy * 100:.2f}%\n")
+        results_file.write(f"Val Precision: {val_precision * 100:.2f}%\n")
+        results_file.write(f"Val Recall: {val_recall * 100:.2f}%\n")
+        results_file.write(f"Val AUC: {val_auc * 100:.2f}%\n")
+        results_file.write(f"Val-Score: {val_f1 * 100:.2f}%\n\n")
         results_file.write("\nTest Results:\n")
         results_file.write(f"Test Loss: {test_loss:.4f}\n")
         results_file.write(f"Test Accuracy: {test_accuracy * 100:.2f}%\n")
         results_file.write(f"Test Precision: {test_precision * 100:.2f}%\n")
         results_file.write(f"Test Recall: {test_recall * 100:.2f}%\n")
         results_file.write(f"Test AUC: {test_auc * 100:.2f}%\n")
-        results_file.write(f"F1-Score: {test_f1 * 100:.2f}%\n")
+        results_file.write(f"F1-Score: {test_f1 * 100:.2f}%\n\n")
         results_file.write("\nClassification Report:\n")
         results_file.write(report_df.to_string())
         results_file.write("\n\nConfusion Matrix:\n")

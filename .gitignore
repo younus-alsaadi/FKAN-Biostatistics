@@ -6,6 +6,16 @@ __pycache__/
 #
 outputs/
 data/
+slurm/
+new_data/
+normData/
+src/logs
+src/CNN
+src/FLEnv
+run2.sh
+run.sh
+test
+back.py
 
 
 # Virtual environments

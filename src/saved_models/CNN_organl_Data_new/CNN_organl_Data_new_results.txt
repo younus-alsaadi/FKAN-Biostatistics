@@ -1,0 +1,15 @@
+Description: this code cnn on the data normDataModel Name: CNN_organl_Data_new
+Batch Size: 4
+Epochs: 60
+
+Test Results:
+Test Loss: 0.3391
+Test Accuracy: 90.11%
+Test Precision: 86.38%
+Test Recall: 98.03%
+Test AUC: 96.83%
+F1-Score: 91.84%
+
+Confusion Matrix:
+TN: 401, FP: 102
+FN: 13, TP: 647

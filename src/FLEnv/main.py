@@ -130,30 +130,4 @@ def main(cfg: DictConfig):
     # then your simulation would run 2 clients concurrently. If in your round you have more than 2 clients, then clients will wait
     # until resources are available from them. This scheduling is done under-the-hood for you so you don't have to worry about it.
     # What is really important is that you set your `num_gpus` value correctly for the task your clients do. For example, if you are training
-    # a large model, then you'll likely see `nvidia-smi` reporting a large memory usage of you clients. In those settings, you might need to
-    # leave `num_gpus` as a high value (0.5 or even 1.0). For smaller models, like the one in this tutorial, your GPU would likely be capable
-    # of running at least 2 or more (depending on your GPU model.)
-    # Please note that GPU memory is only one dimension to consider when optimising your simulation. Other aspects such as compute footprint
-    # and I/O to the filesystem or data preprocessing might affect your simulation  (and tweaking `num_gpus` would not translate into speedups)
-    # Finally, please note that these gpu limits are not enforced, meaning that a client can still go beyond the limit initially assigned, if
-    # this happens, your might get some out-of-memory (OOM) errors.
-
-    ## 6. Save your results
-    # (This is one way of saving results, others are of course valid :) )
-    # Now that the simulation is completed, we could save the results into the directory
-    # that Hydra created automatically at the beginning of the experiment.
-    results_path = Path(save_path) / "results.pkl"
-
-    # add the history returned by the strategy into a standard Python dictionary
-    # you can add more content if you wish (note that in the directory created by
-    # Hydra, you'll already have the config used as well as the log)
-    results = {"history": history, "anythingelse": "here"}
-
-    # save the results as a python pickle
-    with open(str(results_path), "wb") as h:
-        pickle.dump(results, h, protocol=pickle.HIGHEST_PROTOCOL)
-
-
-if __name__ == "__main__":
-    main()
-
+    # a large model, then you'll likely see `nvidia-smi` reporting a large memory usa
